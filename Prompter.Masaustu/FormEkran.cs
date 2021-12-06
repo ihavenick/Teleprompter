@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Prompter.Masaustu
 {
     public partial class FormEkran : Form
     {
-        FormPrompter formPrompter;
+        private readonly FormPrompter formPrompter;
+
         public FormEkran(FormPrompter _formPrompter)
         {
             InitializeComponent();
@@ -21,7 +15,6 @@ namespace Prompter.Masaustu
 
         private void FormEkran_Load(object sender, EventArgs e)
         {
-            
         }
 
 
@@ -33,14 +26,13 @@ namespace Prompter.Masaustu
                 //formPrompter.DrawToBitmap(bmp, new Rectangle(Point.Empty, bmp.Size));
                 var bmp = formPrompter.EkranGoruntusu();
 
-                bmp.RotateFlip(RotateFlipType.RotateNoneFlipX);
+                //bmp.RotateFlip(RotateFlipType.RotateNoneFlipX);
 
                 pbAna.Image = bmp;
                 pbAna.SizeMode = PictureBoxSizeMode.StretchImage;
             }
             catch (Exception)
             {
-
             }
         }
 

@@ -36,9 +36,7 @@
             // 
             // pbAna
             // 
-            this.pbAna.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbAna.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.pbAna.Location = new System.Drawing.Point(-1, -1);
             this.pbAna.Name = "pbAna";
             this.pbAna.Size = new System.Drawing.Size(1280, 1024);
@@ -57,12 +55,12 @@
             this.ClientSize = new System.Drawing.Size(1264, 985);
             this.Controls.Add(this.pbAna);
             this.Name = "FormEkran";
+            this.Opacity = 0.5D;
             this.Text = "FormEkran";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormEkran_FormClosing);
             this.Load += new System.EventHandler(this.FormEkran_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbAna)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion

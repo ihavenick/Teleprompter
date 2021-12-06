@@ -1,46 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Prompter.Masaustu
 {
     public partial class FormKontrolPanel : Form
     {
-        PrompterAyar _prompterAyar;
-        FormPrompter _gelenForm;
+        private readonly FormPrompter _gelenForm;
+        private readonly PrompterAyar _prompterAyar;
+
         public FormKontrolPanel(PrompterAyar prompterAyar, FormPrompter gelenform)
         {
             _prompterAyar = prompterAyar;
             _gelenForm = gelenform;
             InitializeComponent();
-            this.MouseWheel += FormKontrolPanel_MouseWheel;
+            MouseWheel += FormKontrolPanel_MouseWheel;
             richTextBox1.MouseWheel += FormKontrolPanel_MouseWheel;
         }
 
         private void FormKontrolPanel_MouseWheel(object sender, MouseEventArgs e)
         {
-            int numberOfTextLinesToMove = e.Delta * SystemInformation.MouseWheelScrollLines / 120;
-            if (numberOfTextLinesToMove<0)
+            var numberOfTextLinesToMove = e.Delta * SystemInformation.MouseWheelScrollLines / 120;
+            if (numberOfTextLinesToMove < 0)
             {
-                if (_prompterAyar.KaymaHizi < 30)
-                {
-                    _prompterAyar.KaymaHizi++;
-                }
+                if (_prompterAyar.KaymaHizi < 30) _prompterAyar.KaymaHizi++;
             }
-            else if (numberOfTextLinesToMove>0)
+            else if (numberOfTextLinesToMove > 0)
             {
-                if (_prompterAyar.KaymaHizi>1)
-                {
+                if (_prompterAyar.KaymaHizi > 1) _prompterAyar.KaymaHizi--;
+            }
 
-                _prompterAyar.KaymaHizi--;
-                }
-            }
             nHız.Value = _prompterAyar.KaymaHizi;
         }
 
@@ -48,7 +36,6 @@ namespace Prompter.Masaustu
         {
             _gelenForm.Show();
             _gelenForm.Hide();
-
         }
 
 
@@ -56,14 +43,13 @@ namespace Prompter.Masaustu
         {
             try
             {
-               var bmp = _gelenForm.EkranGoruntusu();
-                
+                var bmp = _gelenForm.EkranGoruntusu();
+
                 pbImage.Image = bmp;
                 pbImage.SizeMode = PictureBoxSizeMode.StretchImage;
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -71,13 +57,9 @@ namespace Prompter.Masaustu
         {
             var checkbox = sender as CheckBox;
             if (checkbox.Checked)
-            {
                 _prompterAyar.ArkaPlanRengiKoyumu = true;
-            }
             else
-            {
                 _prompterAyar.ArkaPlanRengiKoyumu = false;
-            }
         }
 
         private void FormKontrolPanel_FormClosed(object sender, FormClosedEventArgs e)
@@ -96,13 +78,9 @@ namespace Prompter.Masaustu
         {
             var checkbox = sender as CheckBox;
             if (checkbox.Checked)
-            {
                 _prompterAyar.otomatikAcikmi = true;
-            }
             else
-            {
                 _prompterAyar.otomatikAcikmi = false;
-            }
         }
 
         private void btnYukari_Click(object sender, EventArgs e)
